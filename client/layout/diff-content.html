@@ -1,0 +1,17 @@
+<template name="diffContent">
+    <div class="main">
+        <div class="container {{#if isMainFullWidth}}full-width{{/if}}">
+            <div class="expand-icon js-expand-viewport" title="{{#if isMainFullWidth}}Compress viewport{{else}}Expand viewport{{/if}}">
+                {{#if isMainFullWidth}}
+                    <i class="fa fa-compress"></i>
+                {{else}}
+                    <i class="fa fa-expand"></i>
+                {{/if}}
+            </div>
+            <div class="refresh-icon js-reset-viewport" title="Reset viewport">
+                <i class="fa fa-refresh"></i>
+            </div>
+            {{> prettyDiffOutput}}
+        </div>
+    </div>
+</template>

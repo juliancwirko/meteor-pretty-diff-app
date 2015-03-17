@@ -1,0 +1,304 @@
+// must have - main stylus jeet grid system import + rupture
+
+// you can add nib if you want
+@import '_normalize'
+
+@import 's-grid-settings'
+@import 's-grid-functions'
+@import 's-grid'
+
+@import '_settings'
+
+body
+    font-family font-main
+    overflow-x hidden
+p
+    font-weight 300
+h1, h2, h3, h4, h5, h6
+    font-weight 900
+header
+    height rem-calc(80px)
+    background-color color-main-contrast
+    color color-main-light
+    @extend .cf
+    .container
+        width 100%
+        height 100%
+        padding-left rem-calc(10px)
+        padding-right rem-calc(10px)
+        .logo, .menu
+            line-height rem-calc(80px)
+            margin 0
+        .logo
+            font-weight 900
+            font-size rem-calc(26px)
+        .menu
+            text-align right
+            .menu-icon-bar
+                display inline-block
+.main
+    background-color darken(color-main-light, 5%)
+    padding-top rem-calc(30px)
+    padding-bottom rem-calc(30px)
+    .container
+        width 100%
+        margin 0 auto
+        max-width rem-calc(1200px)
+        padding rem-calc(80px) rem-calc(30px)
+        background-color color-main-light
+        position relative
+        .expand-icon,
+        .refresh-icon
+            position absolute
+            font-size rem-calc(22px)
+            padding rem-calc(10px) rem-calc(15px)
+            text-align center
+            background-color color-main-contrast
+            top 0
+            left 0
+            cursor pointer
+            color color-main-light
+        .expand-icon
+            left rem-calc(48px)
+        &.full-width
+            max-width 100%
+        h1
+            font-size rem-calc(36px)
+            margin-top rem-calc(60px)
+            margin-bottom rem-calc(60px)
+            span
+                display inline-block
+                padding-bottom rem-calc(15px)
+                border-bottom rem-calc(5px) solid color-main-contrast
+.promo
+    .about, .usage, .package
+        padding rem-calc(50px) rem-calc(30px) rem-calc(100px)
+        .wrapper
+            width 100%
+            max-width rem-calc(1000px)
+            margin 0 auto
+        a
+            color color-main-contrast
+    .package
+        code
+            display inline-block
+            margin-top rem-calc(15px)
+            margin-bottom rem-calc(15px)
+    .usage
+        background-color color-main-contrast
+        color color-main-light
+        a
+            color color-main-light
+        .main-icons
+            color color-main-light
+            font-size rem-calc(80px)
+            .fa-inverse
+                color color-main-contrast
+        .usage-desc
+            margin-top rem-calc(35px)
+        p
+            font-weight 600
+    p
+        line-height 1.4
+        margin-bottom rem-calc(10px)
+    code
+        background-color darken(color-main-light, 5%)
+        padding rem-calc(5px) rem-calc(10px)
+        border-radius rem-calc(3px)
+        &.no-bg
+            background-color transparent
+    h1
+        font-size rem-calc(56px)
+        margin-bottom rem-calc(60px)
+        letter-spacing rem-calc(-2px)
+        text-align center
+        @media screen and (min-width: rem-calc(breakpoints[md]))
+            font-size rem-calc(78px)
+            letter-spacing rem-calc(-4px)
+            text-align left
+        span
+            display inline-block
+            padding-bottom rem-calc(15px)
+            border-bottom rem-calc(8px) solid color-main-contrast
+    .main-icons
+        text-align center
+        font-size rem-calc(30px)
+        color color-main-contrast
+.off-canvas-container
+    transition transform cubic-bezier(0.785, 0.135, 0.150, 0.860) .4s
+    transform translateX(0)
+    &.active
+        transform translateX(-75%)
+        @media screen and (min-width: rem-calc(breakpoints[md]))
+            transform translateX(-400px)
+.main-menu
+    width 75%
+    height 100%
+    position fixed
+    top 0
+    right 0
+    transition transform cubic-bezier(0.785, 0.135, 0.150, 0.860) .4s
+    transform translate3d(100%, 0 ,0)
+    background-color color-main-light
+    padding rem-calc(10px) rem-calc(30px)
+    box-shadow rem-calc(-5px) rem-calc(4px) rem-calc(10px) 0 rgba(0, 0, 0, .05)
+    color darken(color-main-dark, 100%)
+    overflow-y auto
+    &::-webkit-scrollbar
+        width rem-calc(5px)
+        background-color color-main-contrast
+    &::-webkit-scrollbar-track
+        background-color darken(color-main-light, 2%)
+    &::-webkit-scrollbar-thumb
+        background-color color-main-contrast
+    .header
+        .text-right
+            text-align right
+    .header, .menu-items-container
+        padding-bottom rem-calc(10px)
+        margin-bottom rem-calc(30px)
+        border-bottom rem-calc(1px) solid darken(color-main-light, 5%)
+    .menu-items-container
+        padding-bottom rem-calc(30px)
+    .menu-items
+        padding rem-calc(5px)
+        a
+            transition color .3s
+            display block
+            font-size rem-calc(36px)
+            font-weight 900
+            padding 0
+            margin rem-calc(10px) 0
+            letter-spacing rem-calc(-1px)
+            &:hover
+                color color-main-contrast
+    .menu-items-other-container
+        margin-top rem-calc(50px)
+        h2
+            font-size rem-calc(20px)
+            letter-spacing rem-calc(-1px)
+    .menu-items-other
+        margin 0
+        padding rem-calc(15px) rem-calc(20px)
+        li
+            font-size rem-calc(14px);
+            line-height 1.3
+            a
+                &:hover
+                    color color-main-contrast
+    .social-icons-container
+        text-align right
+    a
+        color darken(color-main-dark, 100%)
+        text-decoration none
+        &.social-icon
+            font-size rem-calc(28px)
+    img
+        width auto
+        max-width 100%
+        &.jul
+            width rem-calc(50px)
+    &.active
+        transform translate3d(0, 0 ,0)
+    @media screen and (min-width: rem-calc(breakpoints[md]))
+        width rem-calc(400px)
+
+.jumbotron
+    width 100%
+    padding-top rem-calc(70px)
+    padding-bottom rem-calc(100px)
+    padding-left rem-calc(30px)
+    padding-right rem-calc(30px)
+    background-color color-main-dark
+    .cursor
+        height rem-calc(37px)
+        background-color color-main-light
+        width rem-calc(30px)
+        margin-left rem-calc(25px)
+        display inline-block
+        animation cursor-animation 1.4s step-end infinite
+        @media screen and (min-width: rem-calc(breakpoints[md]))
+            height rem-calc(58px)
+    a
+        color color-main-light
+        text-decoration none
+        margin-left rem-calc(10px)
+        margin-right rem-calc(10px)
+    .container
+        width 100%
+        margin 0 auto
+        max-width rem-calc(1200px)
+        color color-main-light
+        text-align center
+    h1
+        font-size rem-calc(46px)
+        margin-bottom 0
+        code
+            text-transform none
+        @media screen and (min-width: rem-calc(breakpoints[md]))
+            font-size rem-calc(72px)
+    h2
+        font-size rem-calc(26px)
+        margin-bottom rem-calc(30px)
+        letter-spacing rem-calc(-2px)
+        @media screen and (min-width: rem-calc(breakpoints[md]))
+            font-size rem-calc(42px)
+
+    ol
+        list-style-type none
+        font-size rem-calc(20px)
+        margin-bottom rem-calc(50px)
+
+@keyframes cursor-animation
+    from, to
+        opacity 0
+    50%
+        opacity 1
+
+.description-for-empty
+    padding-top rem-calc(45px)
+    padding-bottom rem-calc(45px)
+    img
+        max-width 100%
+
+footer
+    padding rem-calc(30px)
+    background-color color-main-dark
+    color color-main-light
+    font-size rem-calc(13px)
+    font-weight 700
+    a
+        color color-main-contrast
+        text-decoration none
+
+// pretty-diff styles overwrite
+
+.pretty-diff-fake-file-button
+    background-color color-main-contrast
+    border-color color-main-contrast
+    padding rem-calc(20px) rem-calc(30px)
+    &:hover
+        background-color darken(color-main-contrast, 10%)
+        border-color darken(color-main-contrast, 10%)
+.pretty-diff-fake-file-input
+    background-color rgba(color-main-light, .3)
+    border-color transparent
+    color color-main-light
+    padding rem-calc(20px) rem-calc(30px)
+    min-width 75%
+    &:focus
+        border-color transparent
+    &::-webkit-input-placeholder
+        color color-main-light
+    &:-moz-placeholder
+        color color-main-light
+        opacity 1
+    &::-moz-placeholder
+        color color-main-light
+        opacity 1
+    &:-ms-input-placeholder
+        color color-main-light
+    @media screen and (min-width: rem-calc(breakpoints[md]))
+        min-width rem-calc(400px)
+.pretty-diff-error
+    margin-bottom rem-calc(25px)

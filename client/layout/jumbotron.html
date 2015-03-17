@@ -1,0 +1,14 @@
+<template name="jumbotron">
+    <div class="jumbotron">
+        <div class="container">
+            <h1><code>$ git diff</code> <div class="cursor"></div></h1>
+            <h2>...prettify and export</h2>
+            {{> prettyDiffInput}}
+            {{> prettyDiffError}}
+            <div class="buttons">
+                <a href="#" class="js-read-more"><i class="fa fa-arrow-circle-down"></i> Read more</a>
+                <a href="https://github.com/juliancwirko/meteor-pretty-diff-app"><i class="fa fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </div>
+</template>
