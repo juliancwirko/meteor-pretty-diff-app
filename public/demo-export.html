@@ -1,0 +1,455 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Custom export title</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            html, body {
+                margin: 0;
+                padding: 0;
+                background-color: #fafafa;
+                font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+            }
+            .pretty-diff-export-title {
+                height: 60px;
+                line-height: 60px;
+                background-color: #36393B;
+                color: #ffffff;
+                font-size: 18px;
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+            .pretty-diff-export-description {
+                background-color: #fff;
+                margin: 30px 25px 0;
+                padding: 25px;
+            }
+            .pretty-diff-export-content {
+                padding: 30px 25px;
+            }
+            /*
+ *
+ * Diff to HTML (diff2html.css)
+ * Author: rtfpessoa (https://github.com/rtfpessoa/diff2html)
+ * Date: Friday 29 August 2014
+ * Last Update: Friday 30 January 2015
+ *
+ */
+
+.d2h-wrapper {
+    display: block;
+    margin: 0 auto;
+    text-align: left;
+    width: 100%;
+}
+
+.d2h-file-wrapper {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-bottom: 1em;
+}
+
+.d2h-file-header {
+    padding: 5px 10px;
+    border-bottom: 1px solid #d8d8d8;
+    background-color: #f7f7f7;
+    font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.d2h-file-stats {
+    display: inline;
+    font-size: 12px;
+    text-align: center;
+    max-width: 15%;
+}
+
+.d2h-lines-added {
+    background-color: #ceffce;
+    border: 1px solid #b4e2b4;
+    color: #399839;
+    border-radius: 5px 0 0 5px;
+    padding: 2px;
+    width: 25px;
+}
+
+.d2h-lines-deleted {
+    background-color: #f7c8c8;
+    border: 1px solid #e9aeae;
+    color: #c33;
+    border-radius: 0 5px 5px 0;
+    padding: 2px;
+    width: 25px;
+}
+
+.d2h-file-name {
+    display: inline;
+    height: 33px;
+    line-height: 33px;
+    max-width: 80%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.d2h-diff-table {
+    border-collapse: collapse;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 12px;
+    height: 18px;
+    line-height: 18px;
+    width: 100%;
+}
+
+.d2h-files-diff {
+    width: 100%;
+    background-color: #fff;
+}
+
+.d2h-file-diff {
+    overflow-x: scroll;
+}
+
+.d2h-file-side-diff {
+    display: inline-block;
+    overflow-x: auto;
+    width: 50%;
+    margin-right: -4px;
+}
+
+.d2h-code-line {
+    display: block;
+    white-space: pre;
+    padding: 0 10px;
+    height: 18px;
+    line-height: 18px;
+    margin-left: 80px;
+    /* Override HighlightJS */
+    color: inherit;
+    overflow-x: inherit;
+    background: none;
+    /* ******************** */
+}
+
+.d2h-code-side-line {
+    display: block;
+    white-space: pre;
+    padding: 0 10px;
+    height: 18px;
+    line-height: 18px;
+    margin-left: 50px;
+    /* Override HighlightJS */
+    color: inherit;
+    overflow-x: inherit;
+    background: none;
+    /* ******************** */
+}
+
+.d2h-code-line del,
+.d2h-code-side-line del {
+    display: inline-block;
+    margin-top: -1px;
+    text-decoration: none;
+    background-color: #ffb6ba;
+    border-radius: 0.2em;
+}
+
+.d2h-code-line ins,
+.d2h-code-side-line ins {
+    display: inline-block;
+    margin-top: -1px;
+    text-decoration: none;
+    background-color: #97f295;
+    border-radius: 0.2em;
+}
+
+.line-num1 {
+    display: inline-block;
+    float: left;
+    width: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.line-num2 {
+    display: inline-block;
+    float: right;
+    width: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.d2h-code-linenumber {
+    position: absolute;
+    width: 2%;
+    min-width: 65px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 18px;
+    line-height: 18px;
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.3);
+    text-align: right;
+    border: solid #eeeeee;
+    border-width: 0 1px 0 1px;
+    cursor: pointer;
+}
+
+.d2h-code-side-linenumber {
+    position: absolute;
+    width: auto;
+    min-width: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 18px;
+    line-height: 18px;
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    border: solid #eeeeee;
+    border-width: 0 1px 0 1px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.d2h-del {
+    background-color: #fee8e9;
+    border-color: #e9aeae;
+}
+
+.d2h-ins {
+    background-color: #dfd;
+    border-color: #b4e2b4;
+}
+
+.d2h-info {
+    background-color: #f8fafd;
+    color: rgba(0, 0, 0, 0.3);
+    border-color: #d5e4f2;
+}
+
+        </style>
+    </head>
+    <body>
+        <div class="pretty-diff-container">
+            
+                <div class="pretty-diff-export-title">
+                    Custom export title
+                </div>
+            
+            
+                <div class="pretty-diff-export-description">
+                    <h3 id="customexportdescriptioninmardown">Custom export description in mardown</h3>
+
+<ul>
+<li>Test 1</li>
+<li><strong>Test 2</strong></li>
+</ul>
+                </div>
+            
+            <div class="pretty-diff-side-by-side pretty-diff-export-content">
+                <div class="d2h-wrapper">
+<div class="d2h-file-wrapper" data-lang="html">
+     <div class="d2h-file-header">
+       <div class="d2h-file-stats">
+         <span class="d2h-lines-added">+9</span>
+         <span class="d2h-lines-deleted">-5</span>
+       </div>
+       <div class="d2h-file-name">client/s-alert-template.html</div>
+     </div>
+     <div class="d2h-files-diff">
+       <div class="d2h-file-side-diff">
+         <div class="d2h-code-wrapper">
+           <table class="d2h-diff-table">
+             <tbody class="d2h-diff-tbody">
+           <tr>
+  <td class="d2h-code-side-linenumber d2h-info"></td>
+  <td class="d2h-info">    <div class="d2h-code-side-line d2h-info">@@ -5,10 +5,14 @@</div>  </td>
+</tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">5</td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"> &lt;/template&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">6</td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"> </div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">7</td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"> &lt;template name="sAlertContent"&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-del">8</td>
+    <td class="d2h-del">      <div class="d2h-code-side-line d2h-del">-    &lt;div class="s-alert-box s-alert-effect-{{effect}} s-alert-error s-alert-{{condition}} s-alert-{{position}} s-alert-show" id="{{_id}}"&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-del">9</td>
+    <td class="d2h-del">      <div class="d2h-code-side-line d2h-del">-        &lt;div class="s-alert-box-inner"&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-del">10</td>
+    <td class="d2h-del">      <div class="d2h-code-side-line d2h-del">-            &lt;p&gt;{{message}}&lt;/p&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx"></td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"></div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx"></td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"></div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx"></td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"></div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx"></td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"></div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx"></td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"></div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx"></td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"></div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx"></td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"></div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx"></td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"></div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">11</td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx">         &lt;/div&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-del">12</td>
+    <td class="d2h-del">      <div class="d2h-code-side-line d2h-del">-        &lt;span class="s-alert-close"&gt;&lt;/span&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-del">13</td>
+    <td class="d2h-del">      <div class="d2h-code-side-line d2h-del">-    &lt;/div&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx"></td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"></div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">14</td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"> &lt;/template&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">15</td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx">\ No newline at end of file</div>    </td>
+  </tr>
+             </tbody>
+           </table>
+         </div>
+       </div>
+       <div class="d2h-file-side-diff">
+         <div class="d2h-code-wrapper">
+           <table class="d2h-diff-table">
+             <tbody class="d2h-diff-tbody">
+           <tr>
+  <td class="d2h-code-side-linenumber d2h-info"></td>
+  <td class="d2h-info">    <div class="d2h-code-side-line d2h-info"></div>  </td>
+</tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">5</td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"> &lt;/template&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">6</td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"> </div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">7</td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"> &lt;template name="sAlertContent"&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx"></td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"></div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx"></td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"></div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx"></td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"></div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-ins">8</td>
+    <td class="d2h-ins">      <div class="d2h-code-side-line d2h-ins">+    {{#if ../template}}</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-ins">9</td>
+    <td class="d2h-ins">      <div class="d2h-code-side-line d2h-ins">+        {{&gt; Template.dynamic template=../template data=this}}</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-ins">10</td>
+    <td class="d2h-ins">      <div class="d2h-code-side-line d2h-ins">+    {{else}}</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-ins">11</td>
+    <td class="d2h-ins">      <div class="d2h-code-side-line d2h-ins">+        &lt;div class="s-alert-box s-alert-effect-{{effect}} s-alert-{{condition}} s-alert-{{position}} s-alert-show" id="{{_id}}"&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-ins">12</td>
+    <td class="d2h-ins">      <div class="d2h-code-side-line d2h-ins">+            &lt;div class="s-alert-box-inner"&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-ins">13</td>
+    <td class="d2h-ins">      <div class="d2h-code-side-line d2h-ins">+                &lt;p&gt;{{message}}&lt;/p&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-ins">14</td>
+    <td class="d2h-ins">      <div class="d2h-code-side-line d2h-ins">+            &lt;/div&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-ins">15</td>
+    <td class="d2h-ins">      <div class="d2h-code-side-line d2h-ins">+            &lt;span class="s-alert-close"&gt;&lt;/span&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">16</td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx">         &lt;/div&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx"></td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"></div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx"></td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"></div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-ins">17</td>
+    <td class="d2h-ins">      <div class="d2h-code-side-line d2h-ins">+    {{/if}}</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">18</td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx"> &lt;/template&gt;</div>    </td>
+  </tr>
+<tr>
+    <td class="d2h-code-side-linenumber d2h-cntx">19</td>
+    <td class="d2h-cntx">      <div class="d2h-code-side-line d2h-cntx">\ No newline at end of file</div>    </td>
+  </tr>
+             </tbody>
+           </table>
+         </div>
+       </div>
+     </div>
+   </div>
+</div>
+
+            </div>
+        </div>
+    </body>
+</html>
+
