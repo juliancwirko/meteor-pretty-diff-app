@@ -3,7 +3,7 @@
 
 @import 's-grid-settings'
 @import 's-grid-functions'
-@import 's-grid'
+@import 's-grid-classes'
 
 @import '_settings'
 
@@ -34,6 +34,8 @@ header
             text-align right
             .menu-icon-bar
                 display inline-block
+                > .tcon
+                    margin-top rem-calc(20px)
 .main
     background-color darken(color-main-light, 5%)
     padding-top rem-calc(30px)
@@ -142,6 +144,7 @@ header
     box-shadow rem-calc(-5px) rem-calc(4px) rem-calc(10px) 0 rgba(0, 0, 0, .05)
     color darken(color-main-dark, 100%)
     overflow-y auto
+    z-index 9999
     &::-webkit-scrollbar
         width rem-calc(5px)
         background-color color-main-contrast
@@ -300,3 +303,14 @@ footer
         min-width rem-calc(400px)
 .pretty-diff-error
     margin-bottom rem-calc(25px)
+
+.menu-overlay
+    display none
+    position fixed
+    width 100%
+    height 100%
+    z-index 999
+    background-color transparent
+    cursor pointer
+    &.visible
+        display block

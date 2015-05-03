@@ -7,5 +7,5 @@ standard-app-packages
 accounts-password
 
 meteorhacks:ssr
-juliancwirko:s-grid
 juliancwirko:pretty-diff
+juliancwirko:s-grid

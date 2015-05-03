@@ -3,7 +3,7 @@ accounts-password@1.1.1
 autoupdate@1.2.1
 base64@1.0.3
 binary-heap@1.0.3
-blaze@2.1.1
+blaze@2.1.2
 blaze-tools@1.0.3
 boilerplate-generator@1.0.3
 callback-hook@1.0.3
@@ -20,8 +20,8 @@ http@1.1.0
 id-map@1.0.3
 jquery@1.11.3_2
 json@1.0.3
-juliancwirko:pretty-diff@1.0.0
-juliancwirko:s-grid@0.2.0
+juliancwirko:pretty-diff@1.0.1
+juliancwirko:s-grid@1.0.1_1
 launch-screen@1.0.2
 livedata@1.0.13
 localstorage@1.0.3

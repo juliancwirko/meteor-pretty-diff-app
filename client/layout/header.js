@@ -1,8 +1,8 @@
 'use strict';
 
-Template.header.rendered = function () {
+Template.header.onRendered(function () {
     transformicons.add('.tcon');
-};
+});
 
 Template.header.events({
     'click .js-open-menu': function () {
