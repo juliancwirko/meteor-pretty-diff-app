@@ -1,6 +1,6 @@
 ## Pretty Diff App
 
-[http://pretty-diff.meteor.com/](http://pretty-diff.meteor.com/)
+[http://pd.julian.io/](http://pd.julian.io/)
 
 ```
 $ git clone https://github.com/juliancwirko/meteor-pretty-diff-app.git
